@@ -4,7 +4,7 @@ const express = require('express')
 const blogSchema = require('./blogSchema')
 
 const app = express()
-mongoose.connect('mongodb://127.0.0.1:27017/blog')
+mongoose.connect('mongodb+srv://MyFirstBlog:1234567abcdefg@mernapp.kinq4.mongodb.net/?retryWrites=true&w=majority')
 .then(()=>{
     app.listen(3000, ()=>{
         console.log("App started on port 3000");
