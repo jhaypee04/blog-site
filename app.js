@@ -1,12 +1,13 @@
+require('dotenv').config()
 const ejs = require('ejs')
 const mongoose = require('mongoose')
 const express = require('express')
 const blogSchema = require('./blogSchema')
 
 const app = express()
-mongoose.connect('mongodb+srv://MyFirstBlog:1234567abcdefg@mernapp.kinq4.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://MyFirstBlog:nxrW0Uw82nSephUo@mernapp.kinq4.mongodb.net/blog')
 .then(()=>{
-    app.listen(3000, ()=>{
+    app.listen(process.env.PORT, ()=>{
         console.log("App started on port 3000");
     })
 }).catch((err)=>{
@@ -47,3 +48,4 @@ app.get('/blogs', async (req, res)=>{
 
     res.render('blogs', {posts: allPosts})
 })
+
