@@ -7,9 +7,8 @@ const blogSchema = require('./blogSchema')
 const app = express()
 mongoose.connect('mongodb+srv://MyFirstBlog:nxrW0Uw82nSephUo@mernapp.kinq4.mongodb.net/blog')
 .then(()=>{
-    app.listen(process.env.PORT, ()=>{
-        console.log("App started on port 3000");
-    })
+    console.log('database connected')
+   
 }).catch((err)=>{
     console.log(err, "Database connection failed");
 })
@@ -48,4 +47,8 @@ app.get('/blogs', async (req, res)=>{
 
     res.render('blogs', {posts: allPosts})
 })
+const port = process.env.PORT || 3000
 
+app.listen(port, ()=>{
+    console.log(`App started on port 3000 ${port}`);
+})
