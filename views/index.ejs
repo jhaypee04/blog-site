@@ -12,6 +12,7 @@
         <h1>Hello World</h1>
         <p>Welcome to my blogging site- to Add Blogs</p>
         <nav class="index-nav">
+            <a id="addBlogs" href="/addBlogs">Add Blog</a>
             <div class="menu">
                 <a href="/register">Register</a>
                 <a href="/login">Login</a>
@@ -31,5 +32,15 @@
                 <% }) %>
         </div>
     </div>
+
+    <script>
+        let addBlogs = document.querySelector('#addBlogs')
+        if(document.cookie != ''){
+            addBlogs.style.display = 'block'
+        }
+        else{
+            addBlogs.style.display = 'none'
+        }
+    </script>
 </body>
 </html>

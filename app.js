@@ -28,29 +28,22 @@ app.use(cookieParser())
 app.use('/assets', express.static('assets'))
 app.use(express.urlencoded({extended: true}));
 
-
-// app.get('/', (req, res)=>{
-//     res.render('index')
-// })
-
-
-
 // login in a user
 app.post('/login', async (req, res)=>{
     const loginInfo = req.body
     const email = loginInfo.email
     const password = loginInfo.password
 
-    console.log('form password: ', password)
+    // console.log('form password: ', password)
 
     userSchema.findOne({email})
     .then((user)=>{
-        console.log("database password: ", user.password)
+        // console.log("database password: ", user.password)
         bcrypt.compare(password, user.password, async (err, data)=>{
             if(err){
                 console.log(err);
             }else{
-                console.log(data)
+                // console.log(data)
 
                 const payload = {
                     user: {
@@ -78,17 +71,6 @@ app.post('/login', async (req, res)=>{
         console.log(err)
     })
 
-
-    // const user = await userSchema.findOne({email:email})
-
- 
-    //     const isMatch = await bcrypt.compare(password, user.password, (err, info)=>{
-    //         if(err){
-    //             console.log(err);
-    //         }else{
-    //             console.log(info)
-    //         }
-    //     })
 
 
 
@@ -128,7 +110,7 @@ app.post('/register', async (req, res)=>{
                 // when hosting change to true
                 httpOnly: false
             })
-            res.redirect('/addBlogs')
+            res.redirect('/login')
 
 
         }
@@ -179,12 +161,15 @@ app.get('/login', (req, res)=>{
     res.render('login')
 })
 
-// AddBlog Route
-app.get('/addBlogs', protectRoute, (req, res)=>{
-    // const user = req.user;
-    // console.log(user)
 
-    res.render('addBlogs')
+
+// AddBlog Route
+app.get('/addBlogs', protectRoute, async (req, res)=>{
+    const user = req.user.user.email;
+    const aUser = await userSchema.findOne({email: user})
+    // console.log(aUser)
+
+    res.render('addBlogs', {username: aUser.username})
 })
 
 function protectRoute(req, res, next){
@@ -193,6 +178,7 @@ function protectRoute(req, res, next){
         const user = jwt.verify(token, secretKey)
 
         req.user = user
+        // console.log(req.user)
         next()
     }
     catch(err){

@@ -10,8 +10,12 @@
 <body>
     <div class="container">
         <h1>Add Blogs</h1>
-        <a href="/">View Blogs</a>
-
+        <p>Welcome <b><%= username %></b></p>
+        <nav style="margin-bottom: 10px;">
+            <a href="/">View Blogs</a>
+            <a href="/logout">Log out</a>
+        </nav>
+            
         <form action="/success" method="post">
             <label for="username">Blog Author</label>
             <input type="text" id="username" name="username">
