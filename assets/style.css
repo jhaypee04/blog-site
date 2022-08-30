@@ -10,6 +10,15 @@ nav a{
     margin-bottom: 0;
     text-align: center;
 }
+.index-nav{
+    display: flex;
+}
+.menu{
+    display: flex;
+}
+.menu a{
+    margin-left: 10px;
+}
 .container{
     width: 80%;
     margin: 0 auto;

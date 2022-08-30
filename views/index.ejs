@@ -10,20 +10,26 @@
 <body>
     <div class="container">
         <h1>Hello World</h1>
-        <p>Welcome to my blogging site</p>
-        <a href="/blogs">View Blogs</a>
-        <form action="/success" method="post">
-            <label for="username">Blog Author</label>
-            <input type="text" id="username" name="username">
-            <br>
-            <label for="title">Title of Post</label>
-            <input type="text" id="title" name="title">
-            <br>
-            <label for="body">Body of Post</label>
-            <textarea name="body" id="body" ></textarea>
-            <br>
-            <input type="submit">
-        </form>
+        <p>Welcome to my blogging site- to Add Blogs</p>
+        <nav class="index-nav">
+            <div class="menu">
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            </div>
+        </nav>
+
+        <div style="background: white; padding: 10px; margin-top: 10px;">
+            <nav>
+                <h1>All Blogs</h1>
+            </nav>
+                <% posts.forEach(post => { %>
+                    <div class="posts">
+                        <h2>Title: <span class="noBold"><%= post.title %></span> </h2>
+                        <h3>Author: <span class="noBold"><%= post.name %></span></h3>
+                        <p><%= post.body %></p>
+                    </div>
+                <% }) %>
+        </div>
     </div>
 </body>
 </html>
