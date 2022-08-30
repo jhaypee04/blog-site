@@ -11,7 +11,7 @@ const userSchema = require('./userSchema')
 const secretKey = 'myfirstblog'
 
 
-const mongodb = process.env.MONGODB || 'mongodb://localhost:27017/blog' || 'mongodb+srv://MyFirstBlog:nxrW0Uw82nSephUo@mernapp.kinq4.mongodb.net/blog'
+const mongodb = process.env.MONGODB || 'mongodb://localhost:27017/blog'
 
 mongoose.connect(mongodb)
 .then(()=>{
