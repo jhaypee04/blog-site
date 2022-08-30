@@ -161,7 +161,11 @@ app.get('/login', (req, res)=>{
     res.render('login')
 })
 
-
+// Log out Route
+app.get('/logout', (req, res)=>{
+    res.clearCookie('token')
+    res.redirect('/login')
+})
 
 // AddBlog Route
 app.get('/addBlogs', protectRoute, async (req, res)=>{
