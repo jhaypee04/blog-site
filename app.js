@@ -111,6 +111,7 @@ app.post('/register', async (req, res)=>{
                 httpOnly: false
             })
             res.redirect('/login')
+            // res.render('blogs)
 
 
         }
@@ -119,7 +120,6 @@ app.post('/register', async (req, res)=>{
         }
 
     }
-    // res.render('blogs)
 })
 
 // save a post
