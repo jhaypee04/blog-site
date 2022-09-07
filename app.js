@@ -42,8 +42,9 @@ app.post('/login', async (req, res)=>{
         bcrypt.compare(password, user.password, async (err, data)=>{
             if(err){
                 console.log(err);
-            }else{
-                // console.log(data)
+            }
+            if(data){
+                console.log(data)
 
                 const payload = {
                     user: {
@@ -62,7 +63,11 @@ app.post('/login', async (req, res)=>{
                 })
 
                 res.redirect('/addBlogs')
-
+                
+            }
+            else{
+                res.redirect('/register')
+                console.log('Wrong password')
             }
         })
 
